@@ -6,27 +6,32 @@
   <title>Document</title>
 </head>
 <body>
-  <div *ngIf="message!=undefined">{{message}}</div>
-  <div *ngIf="errorMessage!=undefined">{{errorMessage}}</div>
-  <form #loanrequestform="ngForm" (ngSubmit)="addloan()">
-    <div>
-      <input type="number" id="" name="amount" required placeholder="Enter Amount" #loanAmt = "ngModel" [(ngModel)]="loanRequestForm.loanAmt">
+  <section class="col-md-3 menu-section">
+    <div *ngIf="message!=undefined">{{message}}</div>
+    <div *ngIf="errorMessage!=undefined">{{errorMessage}}</div>
+    <div *ngIf="flag">
+      <form #loanrequestform="ngForm" (ngSubmit)="addloan()">
+        <div>
+          <input type="number" id="" name="amount" required placeholder="Enter Amount" #loanAmt = "ngModel" [(ngModel)]="loanRequestForm.loanAmt">
+        </div>
+        <div>
+          <input type="number" id="" name="tenure" required placeholder="Enter Tenure" #tenure = "ngModel" [(ngModel)]="loanRequestForm.tenure">
+        </div>
+        <div>
+          <input type="text" id="" name="loantype" required placeholder="Enter loan type" #loantype = "ngModel" [(ngModel)]="loanRequestForm.loanType">
+        </div>
+        <div>
+          <input type="number" id="" name="annualincome" required placeholder="Enter annual income" #annualincome = "ngModel" [(ngModel)]="loanRequestForm.annualIncome">
+        </div>
+        <div>
+          <input type="number" id="" name="roi" required placeholder="Enter rate of interest" #roi = "ngModel" [(ngModel)]="loanRequestForm.rateOfInterest">
+        </div>
+        <div>
+          <input type="number" id="" name="creditscore" required placeholder="Enter credit score" #creditscore = "ngModel" [(ngModel)]="loanRequestForm.creditScore">
+        </div>
+        <button type="submit">submit</button>
+      </form>
     </div>
-    <div>
-      <input type="number" id="" name="tenure" required placeholder="Enter Tenure" #tenure = "ngModel" [(ngModel)]="loanRequestForm.tenure">
-    </div>
-    <div>
-      <input type="text" id="" name="loantype" required placeholder="Enter loan type" #loantype = "ngModel" [(ngModel)]="loanRequestForm.loanType">
-    </div>
-    <div>
-      <input type="number" id="" name="annualincome" required placeholder="Enter annual income" #annualincome = "ngModel" [(ngModel)]="loanRequestForm.annualIncome">
-    </div>
-    <div>
-      <input type="number" id="" name="roi" required placeholder="Enter rate of interest" #roi = "ngModel" [(ngModel)]="loanRequestForm.rateOfInterest">
-    </div>
-    <div>
-      <input type="number" id="" name="creditscore" required placeholder="Enter credit score" #creditscore = "ngModel" [(ngModel)]="loanRequestForm.creditScore">
-    </div>
-  </form>
+  </section>
 </body>
 </html>

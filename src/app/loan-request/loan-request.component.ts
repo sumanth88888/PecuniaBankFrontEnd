@@ -12,6 +12,7 @@ export class LoanRequestComponent implements OnInit {
 
   loanRequestForm: LoanRequestForm = new LoanRequestForm();
   message:string;
+  flag:boolean=true;
   errorMessage:string;
   @ViewChild('loanrequestform')
   form:NgForm
@@ -22,7 +23,10 @@ export class LoanRequestComponent implements OnInit {
 
   public addloan(){
     this.loanRequestForm.accountId="8146089998";
-    this.loanService.addLoan(this.loanRequestForm).subscribe(data=>{this.message=data;console.log(data);}
+    this.loanService.addLoan(this.loanRequestForm).subscribe(data=>{
+      this.message=data.message;console.log(data);
+      this.flag=false;
+      this.form.reset();}
       ,error=>{this.errorMessage=error.error.message});
   }
 
