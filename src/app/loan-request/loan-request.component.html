@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div *ngIf="message!=undefined">{{message}}</div>
+  <div *ngIf="errorMessage!=undefined">{{errorMessage}}</div>
+  <form #loanrequestform="ngForm" (ngSubmit)="addloan()">
+    <div>
+      <input type="number" id="" name="amount" required placeholder="Enter Amount" #loanAmt = "ngModel" [(ngModel)]="loanRequestForm.loanAmt">
+    </div>
+    <div>
+      <input type="number" id="" name="tenure" required placeholder="Enter Tenure" #tenure = "ngModel" [(ngModel)]="loanRequestForm.tenure">
+    </div>
+    <div>
+      <input type="text" id="" name="loantype" required placeholder="Enter loan type" #loantype = "ngModel" [(ngModel)]="loanRequestForm.loanType">
+    </div>
+    <div>
+      <input type="number" id="" name="annualincome" required placeholder="Enter annual income" #annualincome = "ngModel" [(ngModel)]="loanRequestForm.annualIncome">
+    </div>
+    <div>
+      <input type="number" id="" name="roi" required placeholder="Enter rate of interest" #roi = "ngModel" [(ngModel)]="loanRequestForm.rateOfInterest">
+    </div>
+    <div>
+      <input type="number" id="" name="creditscore" required placeholder="Enter credit score" #creditscore = "ngModel" [(ngModel)]="loanRequestForm.creditScore">
+    </div>
+  </form>
+</body>
+</html>

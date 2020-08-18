@@ -7,10 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoanRequestComponent } from './loan-request/loan-request.component';
+import { LoanDisbursalComponent } from './loan-disbursal/loan-disbursal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoanRequestComponent,
+    LoanDisbursalComponent
   ],
   imports: [
     BrowserModule,
