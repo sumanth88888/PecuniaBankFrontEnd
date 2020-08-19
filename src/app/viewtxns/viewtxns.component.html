@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table class="table table-primary table-striped table-hover mx-auto mt-3">
+    <tr>
+      <th>Date Of Transaction</th>
+      <th>Status</th>
+      <th>Amount</th>
+      <th>Txn Type</th>
+    </tr>
+    <tr *ngFor="let t of txns">
+      <td>{{t.transactionDate}}</td>
+      <td>{{t.transactionStatus | titlecase}}</td>
+      <td>{{t.transactionAmount}}</td>
+      <td>{{t.transactionType}}</td>
+    </tr>
+    <div class="alert alert-danger" *ngIf="errorMsg != undefined">{{errorMsg}}</div>
+  
+  </table>
+</body>
+</html>
+

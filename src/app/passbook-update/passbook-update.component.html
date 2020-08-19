@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="row  bg-dark">
+    <div><input type="button" value="View Transactions For Date Range" (click)="showTxnDateForm()"
+        class="btn btn-primary m-4 justify-context"></div>
+
+  </div>
+  <form *ngIf="txnDateFormFlag" #frm="ngForm" (ngSubmit)="ViewTxnsDtRange()">
+    <div class="form-group">
+      <label class="m-3">User ID</label>
+      <input type="number" name="recid" [(ngModel)]="rform.receipentId" required pattern="[0-9]{12}" #recid="ngModel"
+        class="form-control mx-sm-3" placeholder="User Id" aria-describedby="RecepentHelpInline">
+      <div class="alert alert-danger" *ngIf="recid.invalid && recid.touched">Recepent Id is required</div>
+      <small id="RecepentHelpInline" class="text-muted">
+        Must be 12 Digits long.
+      </small>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mt-3 mx-auto">
+        <label class="m-3">From Date</label>
+        <input type="date" name="fromdate" [(ngModel)]="rform.fromDt" required #fromdate="ngModel"
+          class="form-control" />
+        <div class="alert alert-danger" *ngIf="fromdate.invalid && fromdate.touched">From Date is required</div>
+      </div>
+      <div class="form-group col-md-6 mt-3 mx-auto">
+        <label class="m-3">To Date</label>
+        <input type="date" name="todate" [(ngModel)]="rform.toDt" required #todate="ngModel" class="form-control" />
+        <div class="alert alert-danger" *ngIf="todate.invalid && todate.touched">To Date is required</div>
+      </div>
+    </div>
+    <div class="mt-2 text-center"><input type="submit" value="passbookupdate" [disabled]="!frm.valid"
+        class="btn btn-success">
+    </div>
+  </form>
+  <div class="alert alert-danger" *ngIf="errorMsg!=undefined">{{errorMsg}}</div>
+
+  <table class="table table-primary table-striped table-hover mx-auto mt-3">
+    <tr>
+      <th>Date Of Transaction</th>
+      <th>Status</th>
+      <th>Amount</th>
+      <th>Txn Type</th>
+    </tr>
+    <tr *ngFor="let t of txns">
+      <td>{{t.transactionDate}}</td>
+      <td>{{t.transactionStatus | titlecase}}</td>
+      <td>{{t.transactionAmount}}</td>
+      <td>{{t.transactionType}}</td>
+    </tr>
+  </table>
+</body>
+
+
+</html>
+
