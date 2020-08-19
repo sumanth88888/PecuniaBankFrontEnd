@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoanRequestForm } from '../loan-request-form';
 import { NgForm } from '@angular/forms';
-import { LoanService } from '../loan.service';
+import { BankService } from '../bank.service';
 
 @Component({
   selector: 'app-loan-request',
@@ -16,7 +16,7 @@ export class LoanRequestComponent implements OnInit {
   errorMessage:string;
   @ViewChild('loanrequestform')
   form:NgForm
-  constructor(private loanService:LoanService) { }
+  constructor(private loanService:BankService) { }
 
   ngOnInit() {
   }

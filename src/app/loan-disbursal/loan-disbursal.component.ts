@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoanService } from '../loan.service';
 import { LoanRequest } from '../loan-request';
 import { LoanDisbursalForm } from '../loan-disbursal-form';
+import { BankService } from '../bank.service';
 
 @Component({
   selector: 'app-loan-disbursal',
@@ -17,7 +17,7 @@ export class LoanDisbursalComponent implements OnInit {
   error:string;
   pendingFlag:boolean=false;
   requestedFlag:boolean=false;
-  constructor(private loanService:LoanService) { }
+  constructor(private loanService:BankService) { }
 
   ngOnInit() {
     this.loanService.getPendingLoanRequest().subscribe(data=>{this.loanRequests=data;this.pendingFlag=true}, error=>{this.error=error.error.message;console.log(error)});
