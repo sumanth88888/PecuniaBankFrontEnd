@@ -1,0 +1,29 @@
+<!-- <div class="my-4 bg-dark">
+  <nav class="nav-item d-flex justify-content-around bg-dark ">
+        <a routerLink="/credit" routerLinkActive="active" class="btn btn-primary m-4 justify-context"
+          >Credit</a>
+        <a routerLink="/debit" routerLinkActive="active"  class="btn btn-primary m-4 justify-context"
+           target="_blank">Debit</a>
+    </nav>
+</div> 
+ -->
+
+ <body>
+     <div class="container">
+ <div class="dropdown">
+    <button class="dropbtn">Credit</button>
+    <div class="dropdown-content" style="left:0;">
+    <a routerLink="/creditBySlip" routerLinkActive="active" class="btn btn-primary m-4 justify-context">BySlip</a>
+    <a routerLink="/creditByCheque" routerLinkActive="active" class="btn btn-primary m-4 justify-context">ByCheque</a>
+    </div>
+  </div>
+  
+  <div class="dropdown">
+    <button class="dropbtn">Debit</button>
+    <div class="dropdown-content">
+    <a routerLink="/debitBySlip" routerLinkActive="active" class="btn btn-primary m-4 justify-context">BySlip</a>
+    <a routerLink="/debitByCheque" routerLinkActive="active" class="btn btn-primary m-4 justify-context">ByCheque</a>
+    </div>
+  </div>
+</div>
+</body>

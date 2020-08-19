@@ -1,0 +1,49 @@
+
+<head>
+   
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+</head>
+<body> 
+   <section class="container-fluid mx-auto row col-md-12">
+    <section class="col-md-3 menu-section">
+      <h1 class="p-2">Transaction Menu</h1>
+      <section class="mx-auto menu-options">
+        <div class="mt-1"><button class="nav-link active" routerLink="/creditByCheque">CreditByCheque</button></div>
+        <div class="mt-1"><button class="nav-link " routerLink="/debitByCheque">DebitByCheque</button></div>
+        <div class="mt-1"><button class="nav-link" routerLink="/creditBySlip">CreditBySlip</button></div>
+        <div class="mt-1"><button class="nav-link" routerLink="/debitBySlip">DebitBySlip</button></div>
+      </section>
+    </section>
+     <section class="col-md-9 mx-auto view-section">
+      <div class="alert alert-success" *ngIf="msg != undefined && showError">{{msg}}</div>
+      <div class="alert alert-danger" *ngIf="msg != undefined && !showError">{{msg}}</div> 
+    
+    
+    <div class="container"  >
+       <h1>Credit By Cheque</h1>
+       <form #accfrm="ngForm" (ngSubmit)="creditByCheque()">
+        <div>
+          <i class="fas fa-phone"></i>
+              <input type="fromId" id="number" name="fromaccountId"  placeholder="Enter from Account number"  #toId ="ngModel" class="border-primary-rounded"  required pattern="[0-9]{9}"  [(ngModel)]="transfer.fromAccId" />
+      </div>
+    
+      <div>
+        <i class="fas fa-phone"></i>
+            <input type="toId" id="number" name="toaccountId"  placeholder="Enter to Account number"  #toId ="ngModel" class="border-primary-rounded"  required pattern="[0-9]{9}"  [(ngModel)]="transfer.toAccId" />
+    </div>
+      
+        <div>
+       <i class="fas fa-rupee-sign"> </i>
+           <input type="amt" id="amount" name="amount"  placeholder="Enter amount" class="border-primary-rounded" #amt ="ngModel" required pattern="[0-9]{1,6}"  [(ngModel)]="transfer.amount" />
+       </div>
+        
+        <button type="submit" class="btn-success p-1 m-1 " [disabled]="!accfrm.valid" >Transfer Amount</button>
+      </form>
+    
+    </div> 
+    
+     </section>
+   </section>
+
+</body> 
