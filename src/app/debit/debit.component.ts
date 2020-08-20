@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Txnform } from '../txnform';
 import { NgForm } from '@angular/forms';
 import { BankService } from '../bank.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-debit',
@@ -15,7 +16,7 @@ export class DebitComponent implements OnInit {
   showError:boolean=true;
   @ViewChild('accfrm')
   form: NgForm;
-  constructor(private transactionservice:BankService) { }
+  constructor(private transactionservice:BankService, private toastr:ToastrService) { }
 
   ngOnInit() {
   }
@@ -24,10 +25,10 @@ export class DebitComponent implements OnInit {
   {
     this.transactionservice.debitBySlip(this.txnform).subscribe(data => {
       this.msg = data.message; 
-      console.log(data);
+      this.toastr.success(this.msg);
       this.form.reset();
       this.showFlag = true;},
-      error => {this.msg = error.error.message;this.showError=false;});
+      error => {this.msg = error.error.message;this.showError=false;this.toastr.error(this.msg);});
       
 
         

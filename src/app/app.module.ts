@@ -17,7 +17,6 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PassbookUpdateComponent } from './passbook-update/passbook-update.component';
-import { ViewtxnsComponent } from './viewtxns/viewtxns.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 
@@ -33,8 +32,7 @@ import { CommonModule } from '@angular/common';
     TransactionComponent,
     TransferComponent,
     HomePageComponent,
-    PassbookUpdateComponent,
-    ViewtxnsComponent
+    PassbookUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { LoanDisbursalForm } from './loan-disbursal-form';
 import { Txnform } from './txnform';
 import { Transfer } from './transfer';
 import { Reportform } from './reportform';
+import { DeleteForm } from './delete-form';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class BankService {
     return this.http.get(BankConstants.VIEW_ACCOUNT_URL + "/" + accId);
   }
 
-  public deleteAccount(accountId:string):Observable<any> {
-    return this.http.put(BankConstants.DELETE_ACCOUNT_URL,accountId);
+  public deleteAccount(dFrm:DeleteForm):Observable<any> {
+    return this.http.put(BankConstants.DELETE_ACCOUNT_URL,dFrm);
   }
 
 
@@ -80,8 +81,8 @@ export class BankService {
   }
 
 
-  public viewTxns(userId:string):Observable<any>{
-    return this.http.get(BankConstants.VIEW_TXN_URL+"/"+123456654322);
+  public viewTxns(rform:Reportform):Observable<any>{
+    return this.http.post(BankConstants.VIEW_TXN_URL,rform);
  }
  
  public viewTxnsDtRange(rform:Reportform):Observable<any>{

@@ -5,7 +5,7 @@ export class BankConstants {
     public static ADD_ACCOUNT_URL= BankConstants.SPRING_WEB_URL +"addaccount";
     public static VIEW_ACCOUNT_URL= BankConstants.SPRING_WEB_URL +"viewaccountbyaccid";
     public static EDIT_ACCOUNT_URL= BankConstants.SPRING_WEB_URL +"editaccount";
-    public static DELETE_ACCOUNT_URL=BankConstants.SPRING_WEB_URL+"deleteaccount/";
+    public static DELETE_ACCOUNT_URL=BankConstants.SPRING_WEB_URL+"deleteaccount";
 
     public static LOAN_REQUEST = BankConstants.SPRING_WEB_URL+"loanrequest";
     public static PENDING_LOAN_REQUEST = BankConstants.SPRING_WEB_URL+"viewloanrequest/pending";

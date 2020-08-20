@@ -9,6 +9,7 @@ import { DebitComponent } from './debit/debit.component';
 import { CreditComponent } from './credit/credit.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { PassbookUpdateComponent } from './passbook-update/passbook-update.component';
 
 const routes: Routes = [
   {path:'addAccount', component:AccountComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path:'creditByCheque', component:TransferComponent},
   {path:'debitByCheque', component:DebitByChequeComponent},
   {path:'home', component: HomePageComponent},
-  {path:'', component:HomePageComponent}
+  {path:'', component:HomePageComponent},
+  {path:'passbook', component:PassbookUpdateComponent}
 ];
 
 @NgModule({

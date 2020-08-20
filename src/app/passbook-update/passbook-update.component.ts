@@ -12,17 +12,17 @@ import { NgForm } from '@angular/forms';
 export class PassbookUpdateComponent implements OnInit {
 
   txns: any = [];
-  accId: string;
-  userId: string;
-  msg: string;
-  username: string;
-  txnDateFormFlag = false;
   rform: Reportform = new Reportform();
-  rtype: string;
-  errorMsg: string;
-  form: NgForm
+  error:string;
+  form: NgForm;
+  errorMsg:string;
+  txnDateFormFlag = false;
+  userIdFlag = false;
+  txnsLimitFlag = false;
+  lastUpdateFlag=false;
 
   constructor(private bankService: BankService) { }
+
 
   ngOnInit() {
 
@@ -30,15 +30,57 @@ export class PassbookUpdateComponent implements OnInit {
 
   showTxnDateForm() {
     this.txnDateFormFlag = true;
-
+    this.userIdFlag = false;
+    this.txnsLimitFlag = false;
+    this.lastUpdateFlag=false;
   }
-  public ViewTxnsDtRange() {
-    this.bankService.viewTxnsDtRange(this.rform).subscribe(data => {
-      this.msg = data.msg; console.log(data);
-      this.form.reset();
-    },
-      error => { this.errorMsg = error.error.message });
 
+  showIdForm() {
+    this.userIdFlag = true;
+    this.txnDateFormFlag = false;
+    this.txnsLimitFlag = false;
+    this.lastUpdateFlag=false;
+  }
+
+  showTxnsLimitForm() {
+    this.txnsLimitFlag = true;
+    this.userIdFlag = false;
+    this.txnDateFormFlag = false;
+    this.lastUpdateFlag=false;
+  }
+
+  showLastUpdateForm(){
+    this.lastUpdateFlag=true;
+    this.txnsLimitFlag = false;
+    this.userIdFlag = false;
+    this.txnDateFormFlag = false;
+  }
+
+
+  public viewTransactions() {
+    this.bankService.viewTxns(this.rform).subscribe(data => this.txns = data,
+      error=>{this.error=error.error.message;console.log(error)})
+
+      this.userIdFlag = false;
+  }
+  public viewTxnsDtRange() {
+
+    this.bankService.viewTxnsDtRange(this.rform).subscribe(data => this.txns = data,
+      error=>{this.error=error.error.message});
+
+      this.txnDateFormFlag = false;
+  }
+  public viewTxnsLimit(){
+    this.bankService.viewLimitedTxns(this.rform).subscribe(data => this.txns = data,
+      error=>{this.error=error.error.message;console.log(error)})
+
+      this.txnsLimitFlag = false;
+  }
+  public viewLastUpdatedTvns(){
+    this.bankService.updatingPassbookFromLast(this.rform).subscribe(data => this.txns = data,
+      error=>{this.error=error.error.message;console.log(error)})
+
+      this.lastUpdateFlag=false;
   }
 
 }
