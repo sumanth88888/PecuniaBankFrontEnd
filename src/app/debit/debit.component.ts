@@ -23,11 +23,11 @@ export class DebitComponent implements OnInit {
   debitBySlip()
   {
     this.transactionservice.debitBySlip(this.txnform).subscribe(data => {
-      this.msg = data.msg; 
+      this.msg = data.message; 
       console.log(data);
       this.form.reset();
       this.showFlag = true;},
-      error => {this.msg = error.error.msg;this.showError=false;});
+      error => {this.msg = error.error.message;this.showError=false;});
       
 
         

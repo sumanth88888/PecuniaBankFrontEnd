@@ -6,11 +6,12 @@
   <title>Document</title>
 </head>
 <body>
-  <section class="container-fluid mx-auto row col-md-12">
+  <section class="container-fluid mx-auto row col-md-12 mt-4 p-3">
     <section class="col-md-3 menu-section">
       <h1 class="p-2">Loan Request</h1>
       <section class="mx-auto menu-options">
-        <div class= "mt-1" ><button class="nav-link">Add Loan Request</button></div>
+        <div class= "mt-1" ><a class="nav-link">Add Loan Request</a></div>
+        <div class="mt-1"><a class="nav-link" (click) = "goto()" >Loan Disbursal</a></div>
       </section>
     </section>
     <section class="col-md-9 mx-auto view-section">
@@ -19,8 +20,8 @@
       <section class="col-md-6 mx-auto">
         <div *ngIf="flag">
           <form #loanrequestform="ngForm" (ngSubmit)="addloan()">
-  
-            <div class="name">AccountId</div>
+            <div><h3 class="font-weight-bold">LoanRequestForm</h3></div>
+            <div class="name mt-4">AccountId</div>
             <div><input type="text" class="form-control" pattern="[0-9]{12}" name="accountId" required placeholder="Enter AccountId" #accountId = "ngModel" [(ngModel)]="loanRequestForm.accountId"></div>
             <div class = "alert alert-danger" *ngIf="accountId.invalid && (accountId.touched || accountId.dirty)">AccountId must contain 12 numbers</div>
   
@@ -50,11 +51,12 @@
             </div>
             <div class = "alert alert-danger" *ngIf="creditscore.invalid && (creditscore.touched || creditscore.dirty)">Creditscore should be between 500 and 1000 .</div>
   
-            <button type="submit" class="btn btn-primary m-2 p-2">submit</button>
+            <button class = "btn" type="submit" class="btn btn-primary m-2 p-2">submit</button>
           </form>
         </div>
       </section>
     </section>
   </section>
+  <router-outlet></router-outlet>
 </body>
 </html>

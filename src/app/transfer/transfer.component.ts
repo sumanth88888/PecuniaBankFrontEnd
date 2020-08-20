@@ -23,11 +23,11 @@ export class TransferComponent implements OnInit {
   creditByCheque()
   {
       this.transactionservice.transfer(this.transfer).subscribe(data => {
-        this.msg = data.msg; 
+        this.msg = data.messag; 
         console.log(data);
         this.form.reset();
         this.showFlag = true;},
-        error => {this.msg = error.error.msg;this.showError=false;});
+        error => {this.msg = error.error.message;this.showError=false;});
         
   }
 }

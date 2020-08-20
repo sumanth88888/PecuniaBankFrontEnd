@@ -18,6 +18,8 @@ import { TransferComponent } from './transfer/transfer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PassbookUpdateComponent } from './passbook-update/passbook-update.component';
 import { ViewtxnsComponent } from './viewtxns/viewtxns.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,10 +38,12 @@ import { ViewtxnsComponent } from './viewtxns/viewtxns.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

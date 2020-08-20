@@ -1,10 +1,10 @@
-<section class="container-fluid mx-auto row col-md-12">
+<section class="container-fluid mx-auto row col-md-12 mt-4 p-3">
   <section class="col-md-3 menu-section">
     <h1 class="p-2">Loan Disbursal Menu</h1>
     <section class="mx-auto menu-options">
-      <div class= "mt-1"><button class="nav-link" (click) = "getLoanRequestByStatus('accepted')">Accepted Loan Requests</button></div>
-      <div class= "mt-1"><button class="nav-link" (click) = "getLoanRequestByStatus('rejected')">Rejected Loan Requests</button></div>
-      <div class= "mt-1"><button class="nav-link" (click) = "pendingLoanrequest()">Pending Loan Requests</button></div>
+      <div class= "mt-1"><a class="nav-link" (click) = "getLoanRequestByStatus('accepted')">Accepted Loan Requests</a></div>
+      <div class= "mt-1"><a class="nav-link" (click) = "getLoanRequestByStatus('rejected')">Rejected Loan Requests</a></div>
+      <div class= "mt-1"><a class="nav-link" (click) = "pendingLoanrequest()">Pending Loan Requests</a></div>
     </section>
   </section>
   

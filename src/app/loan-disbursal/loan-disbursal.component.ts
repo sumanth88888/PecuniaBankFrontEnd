@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoanRequest } from '../loan-request';
 import { LoanDisbursalForm } from '../loan-disbursal-form';
 import { BankService } from '../bank.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-loan-disbursal',
@@ -17,7 +18,7 @@ export class LoanDisbursalComponent implements OnInit {
   error:string;
   pendingFlag:boolean=false;
   requestedFlag:boolean=false;
-  constructor(private loanService:BankService) { }
+  constructor(private loanService:BankService, private toastr:ToastrService) { }
 
   ngOnInit() {
     this.loanService.getPendingLoanRequest().subscribe(data=>{this.loanRequests=data;this.pendingFlag=true}, error=>{this.error=error.error.message;console.log(error)});
@@ -27,7 +28,10 @@ export class LoanDisbursalComponent implements OnInit {
     let loanDisbursalForm:LoanDisbursalForm = new LoanDisbursalForm();
     loanDisbursalForm.loanRequestId = request.loanRequestId;
     loanDisbursalForm.option = option;
-    this.loanService.loanDisburse(loanDisbursalForm).subscribe(data=>{this.loanDisburseMessage=data.message});
+    this.loanService.loanDisburse(loanDisbursalForm).subscribe(
+                  data=>{this.loanDisburseMessage=data.message;
+                         this.toastr.success(this.loanDisburseMessage)},
+                  error=>{this.toastr.error(error.error.message)});
     this.loanRequests = this.loanRequests.filter(item=>item != request);
   }
 

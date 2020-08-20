@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoanRequestForm } from '../loan-request-form';
 import { NgForm } from '@angular/forms';
 import { BankService } from '../bank.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-loan-request',
@@ -16,19 +18,21 @@ export class LoanRequestComponent implements OnInit {
   errorMessage:string;
   @ViewChild('loanrequestform')
   form:NgForm
-  constructor(private loanService:BankService) { }
+  constructor(private loanService:BankService, private route:Router, private toastr: ToastrService) { }
 
   ngOnInit() {
+    
   }
 
   public addloan(){
-    this.loanRequestForm.accountId="8146089998";
     this.loanService.addLoan(this.loanRequestForm).subscribe(data=>{
-      this.message=data.message;console.log(data);
+      this.message=data.message;this.toastr.success(this.message);
       this.flag=false;
       this.form.reset();}
-      ,error=>{this.errorMessage=error.error.message});
+      ,error=>{this.errorMessage=error.error.message; this.toastr.error(this.errorMessage)});
   }
 
-
+  public goto(){
+    this.route.navigateByUrl("/loandisbursal");
+  }
 }

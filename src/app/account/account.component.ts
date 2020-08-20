@@ -59,7 +59,7 @@ export class AccountComponent implements OnInit {
 
   addAccount() {
     let resp1 = this.service.addAccount(this.accform);
-    resp1.subscribe((data)=>{this.msg = data.message;console.log(data); this.form.resetForm();this.showAddFlag=false;},
+    resp1.subscribe((data)=>{this.msg = data.msg;console.log(data); this.form.resetForm();this.showAddFlag=false;},
           error=>{console.log(error);this.msg=error.error.message});
           this.flag=true;
   }
