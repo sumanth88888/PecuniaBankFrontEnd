@@ -25,12 +25,12 @@
        <form #accfrm="ngForm" (ngSubmit)="creditByCheque()">
         <div>
           <i class="fas fa-phone"></i>
-              <input type="fromId" id="number" name="fromaccountId"  placeholder="Enter from Account number"  #toId ="ngModel" class="border-primary-rounded"  required pattern="[0-9]{9}"  [(ngModel)]="transfer.fromAccId" />
+              <input type="fromId" id="number" name="fromaccountId"  placeholder="Enter from Account number"  #toId ="ngModel" class="border-primary-rounded"  required pattern="[0-9]{12}"  [(ngModel)]="transfer.fromAccId" />
       </div>
     
       <div>
         <i class="fas fa-phone"></i>
-            <input type="toId" id="number" name="toaccountId"  placeholder="Enter to Account number"  #toId ="ngModel" class="border-primary-rounded"  required pattern="[0-9]{9}"  [(ngModel)]="transfer.toAccId" />
+            <input type="toId" id="number" name="toaccountId"  placeholder="Enter to Account number"  #toId ="ngModel" class="border-primary-rounded"  required pattern="[0-9]{12}"  [(ngModel)]="transfer.toAccId" />
     </div>
       
         <div>

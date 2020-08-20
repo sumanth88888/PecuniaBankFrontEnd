@@ -25,7 +25,7 @@
     <form #accfrm="ngForm" (ngSubmit)="creditBySlip()">
      <div>
        <i class="fas fa-phone"></i>
-           <input type="toId" id="number" name="accountId"  placeholder="Enter Account number" class="border-primary-rounded" #toId ="ngModel"  required pattern="[0-9]{9}"  [(ngModel)]="txnform.accId" />
+           <input type="toId" id="number" name="accountId"  placeholder="Enter Account number" class="border-primary-rounded" #toId ="ngModel"  required pattern="[0-9]{12}"  [(ngModel)]="txnform.accId" />
    </div>
    
      <div>
