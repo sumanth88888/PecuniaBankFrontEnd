@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { BankService } from '../bank.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class PassbookUpdateComponent implements OnInit {
   error:string;
   form: NgForm;
   errorMsg:string;
+  flag:boolean=true;
   txnDateFormFlag = false;
   userIdFlag = false;
   txnsLimitFlag = false;
@@ -59,28 +61,32 @@ export class PassbookUpdateComponent implements OnInit {
 
   public viewTransactions() {
     this.bankService.viewTxns(this.rform).subscribe(data => this.txns = data,
-      error=>{this.error=error.error.message;console.log(error)})
+      error=>{this.error=error.error.message;this.flag=false;
+        console.log(error)})
 
-      this.userIdFlag = false;
+      
   }
   public viewTxnsDtRange() {
 
     this.bankService.viewTxnsDtRange(this.rform).subscribe(data => this.txns = data,
-      error=>{this.error=error.error.message});
+      error=>{this.error=error.error.message;this.flag=false;
+        });
 
-      this.txnDateFormFlag = false;
+      
   }
   public viewTxnsLimit(){
     this.bankService.viewLimitedTxns(this.rform).subscribe(data => this.txns = data,
-      error=>{this.error=error.error.message;console.log(error)})
+      error=>{this.error=error.error.message;this.flag=false;
+        console.log(error)})
 
-      this.txnsLimitFlag = false;
+      
   }
   public viewLastUpdatedTvns(){
     this.bankService.updatingPassbookFromLast(this.rform).subscribe(data => this.txns = data,
-      error=>{this.error=error.error.message;console.log(error)})
+      error=>{this.error=error.error.message;this.flag=false;
+        console.log(error)})
 
-      this.lastUpdateFlag=false;
+      
   }
 
 }

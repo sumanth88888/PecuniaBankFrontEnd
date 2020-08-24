@@ -8,99 +8,117 @@
 </head>
 
 <body>
-  <div class="row  bg-dark justify-context">
-    <div><input type="button" value="User's Transactions" (click)="showIdForm()"
-        class="btn btn-primary m-4 justify-context"></div>
-    <div><input type="button" value="View Transactions For Date Range" (click)="showTxnDateForm()"
-        class="btn btn-primary m-4 justify-context"></div>
-    <div><input type="button" value="View Limited Transactions" (click)="showTxnsLimitForm()"
-        class="btn btn-primary m-4 justify-context"></div>
-        <div><input type="button" value="Update Passbook From Last" (click)="showLastUpdateForm()"
-          class="btn btn-primary m-4 justify-context"></div>
-  </div>
-  <form *ngIf="userIdFlag" #frm="ngForm" (ngSubmit)="viewTransactions()">
-    <div class="form-group col-md-6 mt-3 mx-auto">
-      <label class="m-3">User ID</label>
-      <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
-        class="form-control mx-sm-3" placeholder="User Id" aria-describedby="RecepentHelpInline">
-      <div class="alert alert-danger mt-2 mx-auto" *ngIf="userId.invalid && userId.touched">user Id is required</div>
-      <small id="RecepentHelpInline" class="text-muted">
-        Must be 12 Digits long.
-      </small>
-    </div>
-    <div class="mt-2 text-center"><input type="submit" value="passbookupdate" [disabled]="!frm.valid"
-        class="btn btn-success">
-    </div>
-  </form>
-  <form *ngIf="txnDateFormFlag" #frm="ngForm" (ngSubmit)="viewTxnsDtRange()">
-    <div class="form-group col-md-6 mt-3 mx-auto">
-      <label class="m-3">User ID</label>
-      <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
-        class="form-control mx-sm-3" placeholder="User Id" aria-describedby="RecepentHelpInline">
-      <div class="alert alert-danger" *ngIf="userId.invalid && userId.touched">user Id is required</div>
-      <small id="RecepentHelpInline" class="text-muted">
-        Must be 12 Digits long.
-      </small>
-    </div>
-    <div>
-      <div class="form-group col-md-6 mt-3 mx-auto">
-        <label class="m-3">From Date</label>
-        <input type="date" name="fromdate" [(ngModel)]="rform.fromDt" required #fromdate="ngModel" max="2020-08-19"
-          class="form-control" />
-        <div class="alert alert-danger" *ngIf="fromdate.invalid && fromdate.touched">From Date is required</div>
-      </div>
-      <div class="form-group col-md-6 mt-3 mx-auto">
-        <label class="m-3">To Date</label>
-        <input type="date" name="todate" [(ngModel)]="rform.toDate" required #todate="ngModel" max="2020-08-19" class="form-control" />
-        <div class="alert alert-danger" *ngIf="todate.invalid && todate.touched">To Date is required</div>
-      </div>
-    </div>
-    <div class="mt-2 text-center"><input type="submit" value="passbookupdate" [disabled]="!frm.valid"
-        class="btn btn-success">
-    </div>
-  </form>
-  <form *ngIf="txnsLimitFlag" #frm="ngForm" (ngSubmit)="viewTxnsLimit()">
-    <div class="form-group col-md-6 mt-3 mx-auto">
-      <label class="m-3">User ID</label>
-      <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
-        class="form-control mx-sm-3" placeholder="User Id" aria-describedby="RecepentHelpInline">
-      <div class="alert alert-danger" *ngIf="userId.invalid && userId.touched">user Id is required</div>
-      <small id="RecepentHelpInline" class="text-muted">
-        Must be 12 Digits long.
-      </small>
-    </div>
-    <div class="form-group col-md-6 mt-3 mx-auto">
-      <label class="m-3">No.Of Transactions</label>
-      <input type="number" name="txns" [(ngModel)]="rform.txns" required #txns="ngModel" min="1"
-        class="form-control"  placeholder="How Many Transactions You Want" />
-      <div class="alert alert-danger" *ngIf="txns.invalid && txns.touched">Transactions Number is required</div>
-    </div>
-    <div class="mt-2 text-center"><input type="submit" value="passbookupdate" [disabled]="!frm.valid"
-        class="btn btn-success">
-    </div>
-  </form>
-  <form *ngIf="lastUpdateFlag" #frm="ngForm" (ngSubmit)="viewLastUpdatedTvns()">
-    <div class="form-group col-md-6 mt-3 mx-auto">
-      <label class="m-3 col-md-10">User ID</label>
-      <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
-        class="form-control mx-sm-3" placeholder="User Id" aria-describedby="RecepentHelpInline">
-      <div class="alert alert-danger" *ngIf="userId.invalid && userId.touched">user Id is required</div>
-      <small id="RecepentHelpInline" class="text-muted">
-        Must be 12 Digits long.
-      </small>
-    </div>
-    <div class="form-group col-md-6 mt-3 mx-auto">
-      <label class="m-3">From Date</label>
-      <input type="date" name="fromdate" [(ngModel)]="rform.fromDt" required #fromdate="ngModel"  max="2020-08-19"
-        class="form-control" />
-      <div class="alert alert-danger" *ngIf="fromdate.invalid && fromdate.touched">From Date is required</div>
-    </div>
-    <div class="mt-2 text-center"><input type="submit" value="passbookupdate" [disabled]="!frm.valid"
-        class="btn btn-success">
-    </div>
-  </form>
+  <section class="container-fluid mx-auto row col-md-12 mt-4 p-3">
+    <section class="col-md-4 menu-section">
+      <section class="mx-auto menu-options">
+        <div class="mt-1"><a class="btn btn-primary m-4" (click) = "showIdForm()" >User's Transactions</a></div>
+        <div class="mt-1"><a class="btn btn-primary m-4" (click) = "showTxnDateForm()" >Date Range Transactions</a></div>
+        <div class="mt-1"><a class="btn btn-primary m-4" (click) = "showTxnsLimitForm()" >Limited Transactions</a></div>
+        <div class="mt-1"><a class="btn btn-primary m-4" (click) = "showLastUpdateForm()" >From Last Transaction</a></div>
 
-  <div class="alert alert-danger col-md-10 mx-auto mt-3 margin: auto" *ngIf="error!=undefined">{{error}}</div>
+      </section>
+    </section>
+    <section class="col-md-8 mx-auto view-section">
+      <section class="col-md-6 mx-auto">
+        <form *ngIf="userIdFlag" #frm="ngForm" (ngSubmit)="viewTransactions()">
+          <div class="alert alert-danger" *ngIf="error!=undefined">{{error}}</div>
+          <div class="form-group mt-3 mx-auto">
+            <label class="m-3">User ID</label>
+            <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
+              class="form-control" placeholder="User Id" aria-describedby="RecepentHelpInline">
+            <div class="alert alert-danger mt-2 mx-auto" *ngIf="userId.invalid && userId.touched">user Id is required
+            </div>
+            <small id="RecepentHelpInline" class="text-muted">
+              Must be 12 Digits long.
+            </small>
+          </div>
+          <div class="mt-2 text-center"><input type="submit" value="Transactions" [disabled]="!frm.valid"
+              class="btn btn-success">
+          </div>
+        </form>
+      </section>
+
+      <section class="col-md-6 mx-auto">
+        <form *ngIf="txnDateFormFlag" #frm="ngForm" (ngSubmit)="viewTxnsDtRange()">
+          <div class="alert alert-danger" *ngIf="error!=undefined">{{error}}</div>
+          <div class="form-group mt-3 mx-auto">
+            <label class="m-3">User ID</label>
+            <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
+              class="form-control" placeholder="User Id" aria-describedby="RecepentHelpInline">
+            <div class="alert alert-danger mt-2 mx-auto" *ngIf="userId.invalid && userId.touched">user Id is required</div>
+            <small id="RecepentHelpInline" class="text-muted">
+              Must be 12 Digits long.
+            </small>
+          </div>
+          <div>
+            <div class="form-group mt-3 mx-auto">
+              <label class="m-3">From Date</label>
+              <input type="date" name="fromdate" [(ngModel)]="rform.fromDt" required #fromdate="ngModel" max="2020-08-24"
+                class="form-control" />
+              <div class="alert alert-danger mt-2 mx-auto" *ngIf="fromdate.invalid && fromdate.touched">From Date is required</div>
+            </div>
+            <div class="form-group mt-3 mx-auto">
+              <label class="m-3">To Date</label>
+              <input type="date" name="todate" [(ngModel)]="rform.toDate" required #todate="ngModel" max="2020-08-24"
+                class="form-control" />
+              <div class="alert alert-danger mt-2 mx-auto" *ngIf="todate.invalid && todate.touched">To Date is required</div>
+            </div>
+          </div>
+          <div class="mt-2 text-center"><input type="submit" value="Transactions" [disabled]="!frm.valid"
+              class="btn btn-success">
+          </div>
+        </form>
+      </section>
+      <section class="col-md-6 mx-auto">
+        <form *ngIf="txnsLimitFlag" #frm="ngForm" (ngSubmit)="viewTxnsLimit()">
+          <div class="alert alert-danger" *ngIf="error!=undefined">{{error}}</div>
+          <div class="form-group mt-3 mx-auto">
+            <label class="m-3">User ID</label>
+            <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
+              class="form-control" placeholder="User Id" aria-describedby="RecepentHelpInline">
+            <div class="alert alert-danger mt-2 mx-auto" *ngIf="userId.invalid && userId.touched">user Id is required</div>
+            <small id="RecepentHelpInline" class="text-muted">
+              Must be 12 Digits long.
+            </small>
+          </div>
+          <div class="form-group mt-3 mx-auto">
+            <label class="m-3">No.Of Transactions</label>
+            <input type="number" name="txns" [(ngModel)]="rform.txns" required #txns="ngModel" min="1"
+              class="form-control" placeholder="1" />
+            <div class="alert alert-danger mt-2 mx-auto" *ngIf="txns.invalid && txns.touched">Transactions Number is required</div>
+          </div>
+          <div class="mt-2 text-center"><input type="submit" value="Transactions" [disabled]="!frm.valid"
+              class="btn btn-success">
+          </div>
+        </form>
+      </section>
+      <section class="col-md-6 mx-auto">
+        <form *ngIf="lastUpdateFlag" #frm="ngForm" (ngSubmit)="viewLastUpdatedTvns()">
+           <div class="alert alert-danger" *ngIf="error!=undefined">{{error}}</div>
+          <div class="form-group mt-3 mx-auto">
+            <label class="m-3 col-md-10">User ID</label>
+            <input type="number" name="userId" [(ngModel)]="rform.userId" required pattern="[0-9]{12}" #userId="ngModel"
+              class="form-control" placeholder="User Id" aria-describedby="RecepentHelpInline">
+            <div class="alert alert-danger mt-2 mx-auto" *ngIf="userId.invalid && userId.touched">user Id is required</div>
+            <small id="RecepentHelpInline" class="text-muted">
+              Must be 12 Digits long.
+            </small>
+          </div>
+          <div class="form-group mt-3 mx-auto">
+            <label class="m-3">From Date</label>
+            <input type="date" name="fromdate" [(ngModel)]="rform.fromDt" required #fromdate="ngModel" max="2020-08-24"
+              class="form-control" />
+            <div class="alert alert-danger mt-2 mx-auto" *ngIf="fromdate.invalid && fromdate.touched">From Date is required</div>
+          </div>
+          <div class="mt-2 text-center"><input type="submit" value="Transactions" [disabled]="!frm.valid"
+              class="btn btn-success">
+          </div>
+        </form>
+      </section>
+    </section>
+  </section>
+
+  
 
   <table class="table table-hover table-info table-bordered col-md-10 table-striped  mx-auto mt-3">
     <tr>
