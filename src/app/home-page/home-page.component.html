@@ -1,0 +1,56 @@
+<section class="container-fluid bg col-md-12 mt-4 p-3">
+  <img src="../assets/3.jpg" style="  background-size:cover;
+                                      background-position: center;
+                                      height: 100vh;
+                                      width: 100%;">
+</section>
+
+
+
+<div class="team-section jumbotron container-fluid">
+  <h1>Our Services</h1>
+  <span class="border"></span>
+  <div class="ps">
+    <a class="nav-link" (click)="gotoAccount()" (mouseover)="viewP1()" ><img src="../assets/ser2.jpg" alt=""></a>
+    <a class="nav-link" (click)="gotoLoan()" (mouseover)="viewP3()" ><img src="../assets/ser11.jpg" alt=""></a>
+    <a class="nav-link"  (click)="gotoTransferFund()" (mouseover)="viewP4()"><img src="../assets/ser13.png" alt=""></a>
+    <a class="nav-link"  (click)="gotoPassbook()" (mouseover)="viewP5()"><img src="../assets/ser12.jpg" alt=""></a>
+  </div>
+
+
+<div class="section" id="p1" name="p1" *ngIf="showP1Flag">
+  <span class="name">Account</span>
+  <span class="border"></span>
+  <p>
+    Account contains the record of customer to manage the financial needs. If Customer has account then they can transfer the money from their account to another account. Customer can have multiple accounts. Account can be created by two steps. Firstly, there should be a user (Customer).If there is no user (Customer) then account cannot be created. To create account, you need to fill the Account Form containing of four essential information such as Customer ID, Balance and choose account type between Savings and Current accordingly. Account ID will be created automatically.
+  </p>
+</div>
+<div class="section" id="p2" name="p2" *ngIf="showP2Flag">
+  <span class="name">Customer</span>
+  <span class="border"></span>
+  <p>
+    Customer is just a user, they can access the online banking. Until unless they have the account, other functionalities cannot be accessible. Only one and that is loan request. It can be two different loans. If the loan request is accepted, then loan account will be automatically created. There is no need to fill the form. In Customer one more feature is user can add the profile picture so that he can confirm that the their login was correct. In customer the details of Aadhar number, Pan number and contact number will be unique so user should enter the correct details.
+  </p>
+</div>
+<div class="section" id="p3" name="p3" *ngIf="showP3Flag">
+  <span class="name">Loan</span>
+  <span class="border"></span>
+  <p>
+    Loan Services is used to apply the loan request. user can apply if they have only the customer or additionally an account. If the loan request is accepted then the loan account will be automatically generated. There is a restriction that one customer can have only one loan account. So if any loan requests are applied then they are automatically rejected. User can take a look at the loan requests that user has requested. Processing loan will be performed by the admin by viewing all the loan requests. During the processing  loan, the details are checked strictly and approve the loan if user eligible.
+  </p>
+</div>
+<div class="section" id="p4" name="p4" *ngIf="showP4Flag">
+  <span class="name">Transaction</span>
+  <span class="border"></span>
+  <p>
+    Transaction will help us to transfer valid money from one account to another account. It will be transferred immediately after Account Holder click the transfer fund button. There will be no delay for the transfer fund. There are three essentials that need to fill. Firstly, From Account ID must be specified and next To Account ID must be filled. Lastly, amount that account holder choose to transfer. Date will be automatically recorded. For user, account id will be suggested automatic in the From Account ID section.
+  </p>
+</div>
+<div class="section" id="p5" name="p5" *ngIf="showP5Flag">
+  <span class="name">Passbook</span>
+  <span class="border"></span>
+  <p>
+    Passbook is be used for the viewing transactions in two ways. Firstly, user can view the resent transactions upto 20. This functionality will be visible in the account details directly and the user can download the recent transactions as a PDF with the name of transactions. Secondly, user can view detailed transactions in the date ranges. It will be display all the transactions from the date user selected to the date user choose and also download them having the total details about the transactions. Transaction ID will be automatically generated.
+  </p>
+</div>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <section class="container-fluid mx-auto row col-md-12 mt-4 p-3">
+    <section class="col-md-3 menu-section">
+      <h1 class="p-2">Loan Request</h1>
+      <section class="mx-auto menu-options">
+        <div class= "mt-1" ><a class="nav-link">Add Loan Request</a></div>
+        <div class="mt-1"><a class="nav-link" (click) = "goto()" >Loan Disbursal</a></div>
+      </section>
+    </section>
+    <section class="col-md-9 mx-auto view-section">
+      <div *ngIf="message!=undefined">{{message}}</div>
+      <div *ngIf="errorMessage!=undefined">{{errorMessage}}</div>
+      <section class="col-md-6 mx-auto">
+        <div *ngIf="flag">
+          <form #loanrequestform="ngForm" (ngSubmit)="addloan()">
+            <div><h3 class="font-weight-bold">LoanRequestForm</h3></div>
+            <div class="name mt-4">AccountId</div>
+            <div><input type="text" class="form-control" pattern="[0-9]{12}" name="accountId" required placeholder="Enter AccountId" #accountId = "ngModel" [(ngModel)]="loanRequestForm.accountId"></div>
+            <div class = "alert alert-danger" *ngIf="accountId.invalid && (accountId.touched || accountId.dirty)">AccountId must contain 12 numbers</div>
+  
+            <div class="name">Loan Amount</div>
+            <div><input type="number" class="form-control" name="amount" required placeholder="Enter Amount" #amount = "ngModel" [(ngModel)]="loanRequestForm.loanAmt"></div>
+            <div class = "alert alert-danger" *ngIf="amount.invalid && (amount.touched || amount.dirty)">Amount is required.</div>
+  
+            <div class="name">Tenure</div>
+            <div><input type="number" class="form-control" name="tenure" required placeholder="Enter Tenure" #tenure = "ngModel" [(ngModel)]="loanRequestForm.tenure"></div>
+            <div class = "alert alert-danger" *ngIf="tenure.invalid && (tenure.touched || tenure.dirty)">Tenure should be between 12 and 48 required.</div>
+  
+            <div class="name">Loan Type</div>
+            <div><input type="text" class="form-control" name="loantype" required placeholder="Enter loan type" #loantype = "ngModel" [(ngModel)]="loanRequestForm.loanType"></div>
+            <div class = "alert alert-danger" *ngIf="loantype.invalid && (loantype.touched || loantype.dirty)">Loan type is required.</div>
+  
+            <div class="name">Annual Income</div>
+            <div><input type="number" class="form-control" name="annualincome" required placeholder="Enter annual income" #annualincome = "ngModel" [(ngModel)]="loanRequestForm.annualIncome"></div>
+            <div class = "alert alert-danger" *ngIf="annualincome.invalid && (annualincome.touched || annualincome.dirty)">Annual income is required.</div>
+  
+            <div class="name">Rate of Interest</div>
+            <div><input type="number" class="form-control" name="roi" required placeholder="Enter rate of interest" #roi = "ngModel" [(ngModel)]="loanRequestForm.rateOfInterest"></div>
+            <div class = "alert alert-danger" *ngIf="roi.invalid && (roi.touched || roi.dirty)">Rate of interest is required.</div>
+  
+            <div class="name">CreditScore</div>
+            <div>
+              <input type="number" class="form-control" name="creditscore" required placeholder="Enter credit score" #creditscore = "ngModel" [(ngModel)]="loanRequestForm.creditScore">
+            </div>
+            <div class = "alert alert-danger" *ngIf="creditscore.invalid && (creditscore.touched || creditscore.dirty)">Creditscore should be between 500 and 1000 .</div>
+  
+            <button class = "btn" type="submit" class="btn btn-primary m-2 p-2">submit</button>
+          </form>
+        </div>
+      </section>
+    </section>
+  </section>
+  <router-outlet></router-outlet>
+</body>
+</html>

@@ -1,0 +1,44 @@
+
+<head>
+   
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+</head>
+ <body> 
+   <section class="container-fluid mx-auto row col-md-12 mt-4 p-3">
+      <section class="col-md-3 menu-section">
+         <h1 class="p-2">Transaction Menu</h1>
+         <section class="mx-auto menu-options">
+           <div class="mt-1"><button class="nav-link" routerLink="/creditByCheque">CreditByCheque</button></div>
+           <div class="mt-1"><button class="nav-link" routerLink="/debitByCheque">DebitByCheque</button></div>
+           <div class="mt-1"><button class="nav-link active" routerLink="/creditBySlip">CreditBySlip</button></div>
+           <div class="mt-1"><button class="nav-link" routerLink="/debitBySlip">DebitBySlip</button></div>
+         </section>
+       </section>
+      <section class="col-md-9 mx-auto view-section">
+         <div class="alert alert-success" *ngIf="msg != undefined && showError">{{msg}}</div>
+   <div class="alert alert-danger" *ngIf="msg != undefined && !showError">{{msg}}</div> 
+ 
+ 
+ <div class="container" *ngIf="showFlag">
+    <h1>Credit By Slip</h1>
+    <form #accfrm="ngForm" (ngSubmit)="creditBySlip()">
+     <div>
+       <i class="fas fa-phone"></i>
+           <input type="toId" id="number" name="accountId"  placeholder="Enter Account number" class="border-primary-rounded" #toId ="ngModel"  required pattern="[0-9]{12}"  [(ngModel)]="txnform.accId" />
+   </div>
+   
+     <div>
+    <i class="fas fa-rupee-sign"> </i>
+        <input type="amt" id="amount" name="amount"  placeholder="Enter amount" class="border-primary-rounded" #amt ="ngModel" required pattern="[0-9]{1,6}"  [(ngModel)]="txnform.amount" />
+    </div>
+     
+     <button type="submit" class="btn-success p-1 m-1 " [disabled]="!accfrm.valid" >Deposit Amount</button>
+   </form>
+ 
+ </div> 
+      </section>
+   </section>
+ 
+ 
+</body> 

@@ -1,0 +1,179 @@
+<section class="container-fluid mx-auto row col-md-12">
+  <section class="col-md-3 menu-section">
+    <h1 class="p-2">Account Menu</h1>
+    <section class="mx-auto menu-options">
+      <div><a class="nav-link" (click)= "showAddAccount()">Add Account</a></div>
+      <div><a class="nav-link" (click)= "showViewAccount()">View Account</a></div>
+      <div><a class="nav-link" (click)= "showDeleteAccount()">Delete Account</a></div>
+    </section> 
+ </section>
+
+    <section class="col-md-9 mx-auto view-section">
+     <div *ngIf="msg!=undefined">{{msg}}</div>
+       <section *ngIf="showAddFlag" class="col-md-4 mx-auto" >
+         <h2 class = "text-center">Add Account</h2>
+         <div class = "alert alert-warning" *ngIf="msg != undefined">{{message}}</div>
+     <form #accfrm="ngForm" (ngSubmit)="addAccount()">
+
+        <div>Name</div>
+        <div><input type="text" name="cname" [(ngModel)]="accform.customerName" #cname = "ngModel" class = "form-control"required placeholder="Enter Your Name"/></div>
+        <div class = "alert alert-danger" *ngIf="cname.invalid && (cname.touched || cname.dirty)">Name is required.</div>
+
+        <div>Date of Birth</div>
+        <div><input type="date" name="dob" [(ngModel)]="accform.customerDob" #dob = "ngModel" class = "form-control" required placeholder="Enter Your DOB"/></div>
+        <div class = "alert alert-danger" *ngIf="dob.invalid && (dob.touched || dob.dirty)">Date of Birth is required.</div>
+
+        <div>Aadhar Number</div>
+        <div><input type="number" name="adhrnmbr" [(ngModel)]="accform.customerAadhar" #adhrnmbr = "ngModel" class = "form-control" pattern="[0-9]{16}" required placeholder="Enter Your Aadhar Number"/></div>
+        <div class = "alert alert-danger" *ngIf="adhrnmbr.invalid && (adhrnmbr.touched || adhrnmbr.dirty)">Aadhar Number is required.</div>
+
+        <div>PAN Card</div>
+        <div><input type="text" name="pan" [(ngModel)]="accform.customerPan" #pan = "ngModel" class = "form-control" pattern = "[A-Z]{5}[0-9]{4}[A-Z]{1}"required placeholder="Enter Your PAN Number"/></div>
+        <div class = "alert alert-danger" *ngIf="pan.invalid && (pan.touched || pan.dirty)">PAN Card is required.</div>
+
+        <div>Phone</div>
+        <div><input type="number" name="phn" [(ngModel)]="accform.customerContact" #phn = "ngModel" class = "form-control" pattern="[0-9]{10}"required placeholder="Enter Your Phone Number"/></div>
+        <div class = "alert alert-danger" *ngIf="phn.invalid && (phn.touched || phn.dirty)">Phone Number is required.</div>
+
+        <div>Gender</div>
+        <div class="col-md-6 mx-auto">
+            <select name="gender" required [(ngModel)]= "accform.customerGender" #gender="ngModel" class="col-md-12">
+              <option value="">--select Gender--</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="alert alert-danger" *ngIf="gender.invalid && gender.touched">Gender is required</div>
+
+        <div>Address</div>
+        <div><input type="text" name="address" [(ngModel)]="accform.customerAddress" #address="ngModel" class="form-control" required placeholder="Enter Address"/></div>
+        <div class="alert alert-danger" *ngIf="address.invalid && (address.touched || address.dirty)">Customer Address is required</div>
+
+        <div>City</div>
+        <div><input type="text" name="city" [(ngModel)]="accform.customerCity" #city = "ngModel" class = "form-control"  required placeholder="Enter City"/></div>
+        <div class = "alert alert-danger" *ngIf="city.invalid && (city.touched || city.dirty)">City is required.</div>
+  
+        <div>State</div>
+        <div><input type="text" name="state" [(ngModel)]="accform.customerState" #state = "ngModel" class = "form-control"  required placeholder="Enter State"/></div>
+        <div class = "alert alert-danger" *ngIf="state.invalid && (state.touched || state.dirty)">State is required.</div>
+
+        <div>Country</div>
+        <div><input type="text" name="cntry" [(ngModel)]="accform.customerCountry" #cntry = "ngModel" class = "form-control"  required placeholder="Enter Country"/></div>
+        <div class = "alert alert-danger" *ngIf="cntry.invalid && (cntry.touched || cntry.dirty)">Country is required.</div>
+
+        <div>Postal Code</div>
+        <div><input type="number" name="zip" [(ngModel)]="accform.customerZipCode" #zip = "ngModel" class = "form-control" pattern="[0-9]{6}"  required placeholder="Enter ZIP Code"/></div>
+        <div class = "alert alert-danger" *ngIf="zip.invalid && (zip.touched || zip.dirty)">Postal Address is required.</div>
+
+        <div>Branch ID</div>
+        <div><input type="text" name="branch" [(ngModel)]="accform.branchCode" #branch = "ngModel" class = "form-control"  required placeholder="Enter Branch Code"/></div>
+        <div class = "alert alert-danger" *ngIf="branch.invalid && (branch.touched || branch.dirty)">Branch ID is required.</div>
+
+        <div>IFSC Code</div>
+        <div><input type="text" name="ifsc" [(ngModel)]="accform.ifscCode" #ifsc = "ngModel" class = "form-control"  pattern="[A-Z]{4}[0-9]{8}"required placeholder="Enter IFSC Code"/></div>
+        <div class = "alert alert-danger" *ngIf="ifsc.invalid && (ifsc.touched || ifsc.dirty)">IFSC Code is required.</div>
+
+        <div>Opening Balance</div>
+        <div><input type="number" name="bal" [(ngModel)]="accform.acc_bal" #bal = "ngModel" class = "form-control"  required placeholder="Enter Opening Bal"/></div>
+        <div class = "alert alert-danger" *ngIf="bal.invalid && (bal.touched || bal.dirty)">Opening Balance is required.</div>
+        
+        <div>Account Type</div>
+        <div><select name="accType" [(ngModel)]="accform.accountType" #accType="ngModel" required>
+          <option value="">--select Account Type--</option>
+          <option value="CURRENT">CURRENT</option>
+          <option value="SAVINGS">SAVINGS</option>
+
+            </select>
+        </div>
+        <div class="alert alert-danger" *ngIf="accType.invalid && accType.touched">Select Account type</div>
+
+        <div class="mt-2 text-center"><input type="submit" value="Add Account" [disabled]="!accfrm.valid" class="btn btn-danger"/></div>  
+
+    </form>
+   </section>
+
+<!----------------------------------------------------------------------------------------------------------------------------------------------->
+
+<section *ngIf="showViewFlag" class="col-md-4 mx-auto" >
+    <h2 class = "text-center">View Account</h2>
+    <div class = "alert alert-warning" *ngIf="msg != undefined">{{message}}</div>
+
+    <form #frm2="ngForm" (ngSubmit)="viewAccount()">
+        <div>Account ID</div>
+        <div><input type="text" name="aid" [(ngModel)]="accountId" #aid = "ngModel" class = "form-control m-2 p-2" required placeholder="Enter Account ID"/></div>
+        <div class = "alert alert-danger" *ngIf="aid.invalid && (aid.touched || aid.dirty)">Account ID is required.</div>
+        <div><input type="submit" value="View Account" [disabled]="!frm2.valid" class="btn btn-info m-2 p-2"/></div>
+    </form>
+
+    
+</section>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
+
+<section *ngIf="showEditFlag" class="col-md-4 mx-auto" >
+    <h2 class = "text-center">Customer Details</h2>
+    <div class = "alert alert-warning" *ngIf="msg != undefined">{{message}}</div>
+
+    <table class="table table-primary table-striped table-hover mx-auto mt-3">
+      <tr>
+        <th>Account ID</th>
+        <th>Aadhar Number</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>PAN Card</th> 
+        <th>Date Of Birth</th>
+        <th>Address</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>ZIP Code</th>
+        <th>Gender</th>
+        <th>Balance</th>
+        <th>Account Type</th>
+        <th>Branch ID</th>
+        <th>IFSC Code</th>
+      </tr>
+
+      <tr>
+        <td>{{account.accountId}}</td>
+        <td>{{account.customer.aadharNumber}}</td>
+        <td>{{account.customer.name | uppercase}}</td>
+        <td>{{account.customer.phoneNumber}}</td>
+        <td>{{account.customer.panNumber}}</td> 
+        <td>{{account.customer.dateOfBirth}}</td> 
+        <td>{{account.customer.address}}</td> 
+        <td>{{account.customer.state | titlecase}}</td>
+        <td>{{account.customer.city | titlecase}}</td> 
+        <td>{{account.customer.country | titlecase}}</td> 
+        <td>{{account.customer.zipcode}}</td> 
+        <td>{{account.customer.gender}}</td> 
+       <td>{{account.balance}}</td>
+       <td>{{account.accountType}}</td>
+       <td>{{account.branchId}}</td>
+       <td>{{account.ifsc}}</td>
+
+      </tr>
+    </table>
+</section>
+
+
+
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+
+<!------------------------------------------------------------Deleting an account--------------------------------------------------------->
+<section *ngIf="showDeleteFlag" class="col-md-4 mx-auto" >
+  <h2 class = "text-center">Delete Account</h2>
+  <div class = "alert alert-warning" *ngIf="msg != undefined">{{message}}</div>
+
+  <form #frm2="ngForm" (ngSubmit)="deleteAccount()">
+      <div>Account ID</div>
+      <div><input type="text" name="aid" [(ngModel)]="dFrm.accId" #aid = "ngModel" class = "form-control m-2 p-2" required placeholder="Enter Account ID"/></div>
+      <div class = "alert alert-danger" *ngIf="aid.invalid && (aid.touched || aid.dirty)">Account ID is required.</div>
+      <div><input type="submit" value="Delete Account" [disabled]="!frm2.valid" class="btn btn-info m-2 p-2"/></div>
+  </form>
+</section>
+</section>
+</section>
+
